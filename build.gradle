@@ -65,9 +65,3 @@ spotbugsMain {
 		html.enabled = true
 	}
 }
-
-//TODO: Jacoco rules to apply  instruction/branch/etc coverage thresholds
-//TODO: Jacoco exclude packages like mapper with no value for junits
-//TODO: Jacoco increase coverage to acceptable numbers
-//TODO: Configure Checkstyle
-//TODO: Fail build based on CVEs from OWASP check, fix current CVEs
