@@ -1,0 +1,273 @@
+{
+	"info": {
+		"_postman_id": "81ad1c88-f9ed-4202-b331-e289e5875da0",
+		"name": "Demo Suburb Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetSuburbByPostCode",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "276d7b5c-49c1-450b-a39b-3c7e9612c643",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/suburbs?postCode=3000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"suburbs"
+					],
+					"query": [
+						{
+							"key": "postCode",
+							"value": "3000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetSuburbByPostCode EC2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "0e7cc926-3bea-403e-b943-af388286f4fa",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://ec2-3-25-221-113.ap-southeast-2.compute.amazonaws.com:8080/api/v1/suburbs?postCode=3000",
+					"protocol": "http",
+					"host": [
+						"ec2-3-25-221-113",
+						"ap-southeast-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"suburbs"
+					],
+					"query": [
+						{
+							"key": "postCode",
+							"value": "3000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Bearer Token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Bearer Token EC2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetSuburbByName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetSuburbByName EC2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "0e7cc926-3bea-403e-b943-af388286f4fa",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://ec2-3-25-221-113.ap-southeast-2.compute.amazonaws.com:8080/api/v1/suburbs?name=Melbourne",
+					"protocol": "http",
+					"host": [
+						"ec2-3-25-221-113",
+						"ap-southeast-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"suburbs"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Melbourne"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddSuburb",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "a9f82cf9-d400-43ea-bfe6-cd171df8147b",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Melbourne\",\n    \"postCode\": 3000,\n    \"state\": \"VIC\",\n    \"status\": \"new\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/suburbs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"suburbs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddSuburb EC2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "0e7cc926-3bea-403e-b943-af388286f4fa",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Melbourne\",\n\t\"postCode\": 3000,\n\t\"state\": \"VIC\",\n\t\"status\": \"new\"\n}"
+				},
+				"url": {
+					"raw": "http://ec2-3-25-221-113.ap-southeast-2.compute.amazonaws.com:8080/api/v1/suburbs",
+					"protocol": "http",
+					"host": [
+						"ec2-3-25-221-113",
+						"ap-southeast-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"suburbs"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

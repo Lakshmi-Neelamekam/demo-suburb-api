@@ -1,7 +1,7 @@
 openapi: "3.0.0"
 info:
   description: API to retrieve and add suburb information
-  title: Location API overview
+  title: Suburb API overview
   version: 2.0.0
 paths:
   '/suburbs':
@@ -23,7 +23,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/SuburbInformation'
         '404':
-          description: Not Found
+          description: Suburb Not Found
           content:
             application/json:
               schema:
@@ -76,7 +76,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PostCodeInformation'
         '404':
-          description: Not Found
+          description: Suburb Not Found
           content:
             application/json:
               schema:

@@ -1,0 +1,58 @@
+# Demo Suburb Api
+> Api to retrieve suburb information by post code, suburb information (including post code) by suburb name, and to add new suburb and post code combinations.
+
+## Project Set up
+
+### RDS Database
+Create an RDS Database on the AWS Console.
+Ensure inbound rules on security group allow traffic from the IP you are running the spring boot app (local IP or EC2 IP)
+
+### Local development
+
+To point spring boot app to a different RDS instance, change the following in `application.properties`
+
+`spring.datasource.url=jdbc:mysql://{your RDS instance name}:3306/demo
+ spring.datasource.username={your RDS db username}
+ spring.datasource.password={your RDS db password}`
+ 
+To build the project, execute:
+
+`./gradlew clean build`
+
+To run application, execute:
+
+`./gradlew bootRun`
+
+####Documentation 
+Open Api spec available at [OpenApiSpec](documentation/openapi.yaml)
+
+####Authorization & Accessing the Endpoints
+Use postman collection available at [ApiPostmanCollection](postman-collection/Demo-Suburb-Api.postman_collection)
+Obtain an access token using `http://localhost:8080/oauth/token` 
+Use the `access_token` from response on `GetSuburbByPostCode` and `GetSuburbByName` requests in the collection.
+The collection will be improved later to inject the token through environment variables into the APIs
+
+###EC2 Deployment
+Login to AWS Console and launch an EC2 instance. It is sufficient to keep defaults and the free tier t2.micro instance type. As part of Security Group Configuration, add an entry to allow SSH access on port 22 from your IP
+
+Generate a new key pair, save it locally. 
+
+Locally, execute `./gradlew clean build`, this places the jar to be deployed at `build/libs`. Now copy the jar from your local into the EC2 instance. 
+`scp -i {localPathToEc2KeyPair} {localRepoPath}\build\libs\demo-1.0.0.jar ec2-user@{dns of ec2 instance}:~`
+
+SSH to instance using the key pair
+
+Install java on the instance 
+`sudo amazon-linux-extras install java-openjdk11`
+
+Verify java version on the instance
+`java -version`
+
+Ensure RDS Security Group permits inbound traffic from this EC2 instance (EC2 Private IP address to be added to RDS Security Group)
+
+Ensure EC2 Security Group permits inbound TCP traffic on port 8080
+
+Run the application on EC2 instance
+`java -jar demo-1.0.0.jar`
+
+Update the EC2 requests in the postman collection with the DNS of the created EC2 instance and hit the APIs.
