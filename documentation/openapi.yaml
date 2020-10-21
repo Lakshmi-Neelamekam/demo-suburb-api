@@ -1,0 +1,121 @@
+openapi: "3.0.0"
+info:
+  description: API to retrieve and add suburb information
+  title: Location API overview
+  version: 2.0.0
+paths:
+  '/suburbs':
+    get:
+      summary: Retrieve suburb information by postCode
+      parameters:
+        - in: query
+          name: postCode
+          required: true
+          schema:
+            type: number
+            description: The post code to search for, to retrieve suburb information
+          example: 3030
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuburbInformation'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      summary: Add postCode and suburb information
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SuburbInformation'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  '/postcodes':
+    get:
+      summary: Retrieve postCode information by suburb name
+      parameters:
+        - in: query
+          name: suburb
+          required: true
+          schema:
+            type: string
+            description: The suburb name to search for, to retrieve postCode information
+          example: Werribee
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostCodeInformation'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+ schemas:
+  ErrorResponse:
+    type: object
+    properties:
+      errorCode:
+        type: string
+        example: AUS001
+      errorDescription:
+        type: string
+        example: Could not locate resource
+  SuburbInformation:
+    type: object
+    properties:
+      name:
+        type: string
+        example: Werribee
+      postCode:
+        type: number
+        example: 3030
+      state:
+        type: string
+        example: VIC
+  PostCodeInformation:
+    type: object
+    properties:
+      postCode:
+        type: number
+        example: 3030
+      state:
+        type: string
+        example: VIC
