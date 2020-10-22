@@ -23,16 +23,16 @@ To run application, execute:
 
 `./gradlew bootRun`
 
-####Documentation 
+#### Documentation 
 Open Api spec available at [OpenApiSpec](documentation/openapi.yaml)
 
-####Authorization & Accessing the Endpoints
+#### Authorization & Accessing the Endpoints
 Use postman collection available at [ApiPostmanCollection](postman-collection/Demo-Suburb-Api.postman_collection)
 Obtain an access token using `http://localhost:8080/oauth/token` 
 Use the `access_token` from response on `GetSuburbByPostCode` and `GetSuburbByName` requests in the collection.
 The collection will be improved later to inject the token through environment variables into the APIs
 
-###EC2 Deployment
+### EC2 Deployment
 Login to AWS Console and launch an EC2 instance. It is sufficient to keep defaults and the free tier t2.micro instance type. As part of Security Group Configuration, add an entry to allow SSH access on port 22 from your IP
 
 Generate a new key pair, save it locally. 
