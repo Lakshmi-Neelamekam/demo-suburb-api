@@ -57,7 +57,7 @@ Run the application on EC2 instance
 
 Update the EC2 requests in the postman collection with the DNS of the created EC2 instance and hit the APIs.
 
-###Improvements to be done
+### Improvements to be done
 The following improvements can be done, but haven't been so far due to time constraints and an attempt to first build an overall working solution.
 - Configure Checkstyle
 - Jacoco thresholds to be defined for instruction/line/branch/complexity coverage to fail build when they are not met.
