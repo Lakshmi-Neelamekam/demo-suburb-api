@@ -65,3 +65,35 @@ spotbugsMain {
 		html.enabled = true
 	}
 }
+jacocoTestCoverageVerification {
+	violationRules {
+		rule {
+			limit {
+				minimum = 0.6
+			}
+		}
+	}
+}
+
+jacocoTestReport {
+	reports {
+		xml {
+			enabled true // coveralls plugin depends on xml format report
+		}
+
+		html {
+			enabled true
+		}
+	}
+
+	afterEvaluate {
+		classDirectories.from = files(classDirectories.files.collect {
+			fileTree(dir: it,
+					exclude: ['**/*MapperImpl**'])
+		})
+	}
+}
+
+// to run coverage verification during the build (and fail when appropriate)
+check.dependsOn jacocoTestCoverageVerification
+check.dependsOn dependencyCheckAnalyze

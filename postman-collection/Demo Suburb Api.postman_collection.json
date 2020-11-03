@@ -1,0 +1,410 @@
+{
+	"info": {
+		"_postman_id": "81ad1c88-f9ed-4202-b331-e289e5875da0",
+		"name": "Demo Suburb Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetSuburbByPostCode",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/suburbs?postCode=3111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"suburbs"
+					],
+					"query": [
+						{
+							"key": "postCode",
+							"value": "3111"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetSuburbByPostCode EC2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://ec2-3-25-221-113.ap-southeast-2.compute.amazonaws.com:8080/api/v1/suburbs?postCode=3000",
+					"protocol": "http",
+					"host": [
+						"ec2-3-25-221-113",
+						"ap-southeast-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"suburbs"
+					],
+					"query": [
+						{
+							"key": "postCode",
+							"value": "3000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Bearer Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d4fd5a80-dafe-4dd9-8504-95ab3145dc6d",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"access_token\", jsonData.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "demoId",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "pwkaldnsm765",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "user",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "secret",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Bearer Token EC2",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "demoId",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "pwkaldnsm765",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "user",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "secret",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://ec2-3-25-221-113.ap-southeast-2.compute.amazonaws.com:8080/oauth/token",
+					"protocol": "http",
+					"host": [
+						"ec2-3-25-221-113",
+						"ap-southeast-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "8080",
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetSuburbByName",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/suburbs?name=Melbourne",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"suburbs"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Melbourne"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetSuburbByName EC2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "0e7cc926-3bea-403e-b943-af388286f4fa",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://ec2-3-25-221-113.ap-southeast-2.compute.amazonaws.com:8080/api/v1/suburbs?name=Melbourne",
+					"protocol": "http",
+					"host": [
+						"ec2-3-25-221-113",
+						"ap-southeast-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"suburbs"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Melbourne"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddSuburb",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Donvale\",\n    \"postCode\": 3111,\n    \"state\": \"VIC\",\n    \"status\": \"new\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/suburbs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"suburbs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddSuburb EC2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "0e7cc926-3bea-403e-b943-af388286f4fa",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Melbourne\",\n\t\"postCode\": 3000,\n\t\"state\": \"VIC\",\n\t\"status\": \"new\"\n}"
+				},
+				"url": {
+					"raw": "http://ec2-3-25-221-113.ap-southeast-2.compute.amazonaws.com:8080/api/v1/suburbs",
+					"protocol": "http",
+					"host": [
+						"ec2-3-25-221-113",
+						"ap-southeast-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"suburbs"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
