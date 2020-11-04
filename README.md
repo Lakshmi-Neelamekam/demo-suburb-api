@@ -66,3 +66,11 @@ The following improvements can be done, but haven't been so far due to time cons
 - OWASP report generation as part of build.
 - Postman collection to be automated as much, to inject the accesstoken/urls based on env variable.
 - Automation of creating AWS resources using CloudFormation.
+- Reactive Spring has not been tried here although it is supposed to be more efficient because of its non-blocking nature. Reactive Spring and Relational database have not yet become compatible with each other because JDBC is blocking in general and can be a bottleneck to Reactive Spring and not allow us to reap its benefits. Looks like R2DBC can be used which provides JPA functionality with Reactive Streams. 
+- Checking if the postCode suburb combination is valid - is there any geolocation service to validate this ? not sure.
+- Dockerise the application, push image to a registry like ECR, scan the container for vulnerabilities using a tool like Clair.
+- Distributed tracing, use Spring Sleuth to add trace/span information for every integration. 
+- In reality, users will be coming from JDBC/LDAP so userDetailsService will need to be implemented by our own with a UserDetails model and JPA repository to fetch the users.
+- ClientId and secret used for basic authentication is used from memory, can come from JDBC.
+- Validity of access token not defined, hence default behaviour applies.
+- Scope not clarified between GET and POST methods (i.e GET having only read scope and POST requiring write scope)

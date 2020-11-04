@@ -34,7 +34,7 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
 
         clients.inMemory()
                 .withClient(clientId)
-                .authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit")
+                .authorizedGrantTypes("password", "authorization_code", "refresh_token")
                 .authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT","USER")
                 .scopes("read","write")
                 .autoApprove(true)
